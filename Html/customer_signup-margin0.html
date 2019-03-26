@@ -1,0 +1,294 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="scripts/logsign.js" type="text/javascript"></script>
+    <title>Welcome To Assistance Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Alegreya|Alegreya+Sans|IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i|Merriweather|Merriweather+Sans|Montserrat|Nanum+Myeongjo|Nunito|Nunito+Sans|Quattrocento|Quattrocento+Sans|Roboto|Roboto+Mono|Roboto+Slab');
+        * {
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+
+        @import "@material/form-field/mdc-form-field";
+        @import "@material/radio/mdc-radio";
+    </style>
+    <script>
+
+        function validateForm() {
+            var pass = document.getElementById("userpassword").value;
+            var pass_regex = /^[a-zA-Z]{7,20}$/;
+            var username = document.getElementById("username").value;
+            var username_regex = /^[0-9]{2,10}$/;
+            var contact = document.getElementById("customerContactNo").value;
+            var contact_regex = /^[0-9]{10}$/;
+            var name = document.getElementById("customerName").value;
+            var customerName_regex = /^[a-zA-Z]{7,20}$/;
+
+            var gender = document.getElementsByName("cust_gender")
+
+            var emailID = document.getElementById("customerEmailId").value;
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+            if (username.match(username_regex)) {
+                document.getElementById("username").style.borderColor = "green";
+
+            }
+            else {
+                document.getElementById("username").style.borderColor = "red";
+                document.getElementById("wrongID").style.color = "red";
+
+                document.getElementById("wrongID").innerHTML = "*";
+
+                return false;
+            }
+
+            if (name.match(customerName_regex)) {
+                document.getElementById("customerName").style.borderColor = "green";
+
+            }
+            else {
+                document.getElementById("customerName").style.borderColor = "red";
+                document.getElementById("wrongName").style.color = "red";
+                document.getElementById("wrongName").innerHTML = "*";
+
+                return false;
+            }
+            if (emailID.match(mailformat)) {
+                document.getElementById("customerEmailId").style.borderColor = "green";
+            }
+            else {
+                document.getElementById("customerEmailId").style.borderColor = "red";
+                document.getElementById("wrongEmailID").style.color = "red";
+                document.getElementById("wrongEmailID").innerHTML = "*";
+
+                return false;
+            }
+
+            if (!(gender[0].checked) || !(gender[1].checked)) {
+                alert("Please select Gender");
+                return false;
+            }
+            else {
+
+            }
+
+            if (contact.match(contact_regex) && contact.length == 10) {
+                document.getElementById("customerContactNo").style.borderColor = "green";
+
+            }
+            else {
+                document.getElementById("customerContactNo").style.borderColor = "red";
+                document.getElementById("wrongContact").style.color = "red";
+                document.getElementById("wrongContact").innerHTML = "*";
+
+                return false;
+            }
+            if (pass.match(pass_regex)) {
+                document.getElementById("userpassword").style.borderColor = "green";
+
+            }
+            else {
+                document.getElementById("userpassword").style.borderColor = "red";
+                document.getElementById("wrongPassword").style.color = "red";
+                document.getElementById("wrongPassword").innerHTML = "*";
+
+                return false;
+            }
+
+
+
+
+
+        }
+    </script>
+    <style>
+        .nav {
+            z-index: 5;
+            background-color: green;
+            border-radius: 30px;
+
+        }
+
+        nav {
+            background-color: black;
+
+        }
+
+        .card-body {
+            border-radius: 25px;
+        }
+
+        header,.navigation {
+          
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class=" navigation">
+            <div class=" check  p-1">
+                <nav  style="border-radius: 40px ;backface-visibility: hidden" class="nav  justify-content fixed-top p-2">
+                    <a class=" navbar-brand text-sm-center nav-link " href="#">
+                        <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top"> On Road Assistant</a>
+                    <a class=" text-sm-right nav-link" href="#">Login</a>
+                    <a class=" text-sm-right nav-link active" href="#">SignUp</a>
+                    <a class=" text-sm-right nav-link" href="#" tabindex="-1">Help</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class=" container mt-5">
+        <div class="row">
+            <div class="col-12 ">
+                <div style="padding-top: 50%;" class=" mt-5 center  justify-content-center mdc-card p-4 align-middle shadow" style="width: 100px">
+                    <div class="card-body ">
+                        <label class="display-4">Sign Up</label>
+                        <hr>
+                        <form class="align-middle" action="" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 class="form-control">Username</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+
+                                            <input type="text" class="form-control" id="username" aria-describedby="customerIdHelp" data-toggle="popover" placeholder="123456"
+                                                title="Name" data-content="Contains digits only">
+                                            <span id="wrongID"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 style="text-align:right" class="form-control">Name</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <input type="text" class="form-control" id="customerName" aria-describedby="customerUsernamehelp" data-toggle="popover" placeholder=" John Dae..."
+                                                title="UserName" data-content="Name doesn't contain any special characters">
+                                            <span id="wrongName"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 class="form-control">Email Id</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <input type="text" class="form-control" id="customerEmailId" placeholder="abc@mail_id.com " data-toggle="popover" title="emailHelp"
+                                                data-content="Your Email iD">
+                                            <span id="wrongEmailID"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 class="form-control">Gender</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <div class="mdc-form-field">
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control" type="radio" id="male" name="cust_gender">
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                                <label class="mt-2" for="male">Male</label>
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control" type="radio" id="female" name="cust_gender">
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                                <label class="mt-2" for="female">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 style="text-align:right" class="form-control">Birth</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <input type="date" class="form-control" id="InputDate" placeholder="yyyy-mm-dd">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 style="text-align:right" class="form-control">Contact No</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <input type="tel" class="form-control" id="customerContactNo" aria-describedby="phoneNumberHelp" placeholder="+XX-XXXXXXXXXX"
+                                                data-toggle="popover" title="Contact Help" data-content="Name doesn't contain any special characters">
+                                            <span id="wrongContact"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">
+                                            <h6 style="text-align:right" class="form-control">Password</h6>
+                                        </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Password">
+                                            <span id="wrongPassword"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdc-card__primary-action mdc-card__actions--full-bleed" tabindex="0">
+                                <button class="foo-button mdc-button" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+
+    </footer>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
